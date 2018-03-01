@@ -11,7 +11,7 @@
           Search
         </div>
 
-        <div class="logout navlink col-4 text-center py-4">
+        <div class="logout navlink col-4 text-center py-4" @click="logoutUser">
           Logout
         </div>
       </div>
@@ -36,6 +36,9 @@
       showUserMovies() {
         this.$emit('showUserMovies')
         this.$emit('hideSearchForm')
+      },
+      logoutUser() {
+        this.$store.dispatch('logoutUser')
       }
     }
   }

@@ -70,6 +70,17 @@ export default new vuex.Store({
             console.error(err)
           })
     },
+    logoutUser({commit, dispatch}) {
+      auth.delete('logout')
+          .then(res => {
+            console.log(res)
+            commit('setUser', {})
+            router.push({name: 'Welcome'})
+          })
+          .catch(err => {
+            console.error(err)
+          })
+    },
     authenticate({commit, dispatch}) {
         auth.get('authenticate')
             .then(res => {
