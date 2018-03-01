@@ -17,10 +17,9 @@ var schema = new Schema({
         required: true,
         default: Date.now()
     },
-    imgUrl: {
+    poster_path: {
         type: String,
-        required: true,
-        default: 'http://placehold.it/200X200'
+        required: true
     },
     userId: { // ID of the user who creates a Movie
         type: ObjectId,

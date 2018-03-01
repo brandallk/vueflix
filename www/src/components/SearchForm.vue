@@ -28,6 +28,7 @@
     },
     methods: {
       submit() {
+        this.$emit('hideUserMovies')
         this.$store.dispatch('searchMovieAPI', this.movietitle)
       }
     }

@@ -8,7 +8,7 @@
         </div>
 
         <div class="selection col-4">
-          <moviedetail :movie="selectedMovie" v-if="showSelectedMovie"></moviedetail>
+          <moviedetail :movie="selectedMovie" :displayAddButton="true" v-if="showSelectedMovie"></moviedetail>
         </div>
       </div>
 

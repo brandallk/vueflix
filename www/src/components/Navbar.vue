@@ -3,15 +3,15 @@
     <div class="navbar container-fluid bg-dark">
 
       <div class="row w-100 text-light">
-        <div class="homelink col-4 text-center py-4">
-          <router-link :to="{name: 'Home'}">Home</router-link>
+        <div class="homelink navlink col-4 text-center py-4" @click="showUserMovies">
+          Home
         </div>
 
-        <div class="searchtoggle col-4 text-center py-4" @click="toggleSearch">
+        <div class="searchtoggle navlink col-4 text-center py-4" @click="toggleSearch">
           Search
         </div>
 
-        <div class="logout col-4 text-center py-4">
+        <div class="logout navlink col-4 text-center py-4">
           Logout
         </div>
       </div>
@@ -32,13 +32,17 @@
     methods: {
       toggleSearch() {
         this.$emit('toggleSearch')
+      },
+      showUserMovies() {
+        this.$emit('showUserMovies')
+        this.$emit('hideSearchForm')
       }
     }
   }
 </script>
 
 <style scoped>
-  .searchtoggle:hover {
+  .navlink:hover {
     cursor: pointer;
   }
 </style>

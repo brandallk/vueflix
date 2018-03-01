@@ -2,10 +2,10 @@
   
     <div class="register container-fluid py-4">
       <topbar></topbar>
-      <navbar v-on:toggleSearch="toggleSearch"></navbar>
-      <searchform v-if="showSearchForm"></searchform>
-      <usermovies></usermovies>
-      <searchresult></searchresult>
+      <navbar v-on:toggleSearch="toggleSearch" v-on:showUserMovies="showUserMovies" v-on:hideSearchForm="hideSearchForm"></navbar>
+      <searchform v-if="displaySearchForm" v-on:hideUserMovies="hideUserMovies"></searchform>
+      <usermovies v-if="displayUserMovies"></usermovies>
+      <searchresult v-if="!displayUserMovies"></searchresult>
     </div>
 
 </template>
@@ -27,13 +27,26 @@
     },
     data() {
       return {
-        showSearchForm: false
+        displaySearchForm: false,
+        displayUserMovies: true
       }
     },
     methods: {
       toggleSearch() {
-        this.showSearchForm = this.showSearchForm ? false : true
+        this.displaySearchForm = this.displaySearchForm ? false : true
+      },
+      showUserMovies() {
+        this.displayUserMovies = true
+      },
+      hideUserMovies() {
+        this.displayUserMovies = false
+      },
+      hideSearchForm() {
+        this.displaySearchForm = false
       }
+    },
+    mounted() {
+      this.$store.dispatch('getUserMovies', this.$route.params.userId)
     }
   }
 </script>
