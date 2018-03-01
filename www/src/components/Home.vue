@@ -27,7 +27,7 @@
     },
     data() {
       return {
-        showSearchForm: true
+        showSearchForm: false
       }
     },
     methods: {

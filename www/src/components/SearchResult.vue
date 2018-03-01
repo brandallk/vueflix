@@ -44,5 +44,7 @@
 </script>
 
 <style scoped>
-
+  p.movie {
+    cursor: pointer;
+  }
 </style>

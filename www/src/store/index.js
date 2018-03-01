@@ -30,6 +30,7 @@ export default new vuex.Store({
   state: {
     user: {},
     searchResults: [],
+    userMovies: []
   },
 
   mutations: {
@@ -39,6 +40,9 @@ export default new vuex.Store({
     setSearchResults(state, results) {
       state.searchResults = results
     },
+    setUserMovies(state, movies) {
+      state.userMovies = movies
+    }
   },
 
   actions: {
@@ -93,12 +97,24 @@ export default new vuex.Store({
     getUserMovies({commit, dispatch}, userId) {
       api.get(`/users/${userId}/movies`)
          .then(res => {
-           console.log(res.data)
+           var movies = res.data
+           console.log('users movies:', movies)
+           commit('setUserMovies', movies)
+         })
+         .catch(err => {
+           console.error(err)
          })
     },
 
-    addToUserMovies({commit, dispatch}, movietitle) {
-      api.put('user')
+    addToUserMovies({commit, dispatch}, movie) {
+      api.post('movies', movie)
+         .then(res => {
+           console.log(res.data)
+           dispatch('getUserMovies', movie.userId)
+         })
+         .catch(err => {
+           console.error(err)
+         })
     }
 
   }

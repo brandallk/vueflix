@@ -8,11 +8,10 @@ var router = require('express').Router()
 router.get('/users/:id/movies', getMoviesByUser)
 
 function getMoviesByUser(req, res, next) {
-  User.find({
+  Movie.find({
       userId: req.params.id
     })
-    .then(user => {
-      var movies = user.movies
+    .then(movies => {
       return res.send(movies)
     })
     .catch(next)

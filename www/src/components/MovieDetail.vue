@@ -7,8 +7,6 @@
       <div class="text-center">
         <button class="btn btn-primary" @click="addToUserMovies(movie)">Add to My Movies</button>
       </div>
-
-      {{userMovies}}
     </div>
 
 </template>
@@ -24,20 +22,15 @@
         
       }
     },
-    computed: {
-      userMovies() { console.log('dispatching')
-        var userId = this.$router.params.userId
-        this.$store.dispatch('getUserMovies', userId)
-        return this.$store.state.userMovies
-      }
-    },
     methods: {
       addToUserMovies(movie) {
-        var modifiedUser = {
-          userId: this.$router.params.userId,
-          movies: []
+        var newMovie = {
+          title: movie.title,
+          desc: movie.overview,
+          imgUrl: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+          userId: this.$route.params.userId
         }
-        this.$store.dispatch('addToUserMovies', movie.title)
+        this.$store.dispatch('addToUserMovies', newMovie)
       }
     }
   }
