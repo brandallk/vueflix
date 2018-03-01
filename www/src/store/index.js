@@ -116,7 +116,6 @@ export default new vuex.Store({
            console.error(err)
          })
     },
-
     addToUserMovies({commit, dispatch}, movie) {
       api.post('movies', movie)
          .then(res => {

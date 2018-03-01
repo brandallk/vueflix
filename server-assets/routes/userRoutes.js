@@ -17,15 +17,34 @@ function getMoviesByUser(req, res, next) {
     .catch(next)
 }
 
-// TEMPORARY!!! Get all Users
-router.get('/users', getAllUsers)
-function getAllUsers(req, res, next) {
-  User.find(req.query)
-    .then(users => {
-      res.send(users)
-    })
-    .catch(next)
-}
+// TEMPORARY FOR TESTING!!! Get all Users
+// router.get('/users', getAllUsers)
+// function getAllUsers(req, res, next) {
+//   User.find(req.query)
+//     .then(users => {
+//       res.send(users)
+//     })
+//     .catch(next)
+// }
+
+// TEMPORARY FOR TESTING!!! Delete a User
+// router.delete('/users/:id', deleteUser)
+// function deleteUser(req, res, next) {
+//   User.findByIdAndRemove(req.params.id)
+//     .then(user => {
+//       return res.send({
+//         message: 'Sucessfully deleted a user'
+//       })
+//     })
+//     .catch(next)
+//   Movie.deleteMany({
+//       userId: req.params.id
+//     })
+//     .then(() => {
+//       console.log('Deleted user movies')
+//     })
+//     .catch(next)
+// }
 
 module.exports = {
   router

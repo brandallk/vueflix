@@ -20,7 +20,7 @@ var schema = new Schema({
     required: true,
     // (Note: The following minlength will apply to the HASHED version of a password, as passwords are stored
     // here AFTER hashing. Use validation elsewhere to force users to create their unhashed passwords > a given length.)
-    // minlength: 12
+    minlength: 8
   }
 })
 
